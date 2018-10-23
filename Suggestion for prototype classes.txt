@@ -1,0 +1,47 @@
+enums:
+	Piece: BLACK, UNOCCUPIED, WHITE, KING
+	Player: WHITE, BLACK
+
+Klassen:
+	Board: Repräsentation als Numpy array? vom Typ Piece [-> BLACK/UNOCCUPIED/WHITE/KING]
+		- Erster Index Zeile, Zweiter Index Spalte
+	
+		Funktionen:
+			getValidMoves( turnPlayer [-> WHITE/BLACK] ):
+				return: Liste von Tupeln der Form ((x_from,y_from),(x_to, y_to)) aller möglichen Züge für turnPlayer
+
+			getValidMovesForPiece( (x,y) ):
+				return: Liste von Tupeln der Form ((x,y),(x_to, y_to)) aller möglichen Züge für den Stein an Position (x,y)
+	
+	Game:
+		Funktionen:
+			playGame ( agent_1 [schwarz], agent_2 [weiß], GUI [kann auch null sein, ist fürs Training ja unnötig] ): 
+				Loop bis Spiel entschieden:
+					Frage Agent, der gerade dran ist, nach einem Zug [-> agent.makeMove( board )]
+					Wenn möglich, führe Zug aus.
+					Ansonsten Exception?
+				Falls GUI /= null:
+					Update GUI [-> GUI.update ( board )]
+				return: Gewinner (agent_1, agent_2 oder null)
+	
+	Agent:
+		Funktionen:
+	
+			constructor ( Player [-> WHITE/BLACK], humanPlayer [-> true/false])
+	
+			makeMove( board ):
+				Wenn nicht humanPlayer:
+					Berechne Zug
+				Sonst:
+					Frage GUI nach Eingabe [-> GUI.getMove( )]
+				return: ((x_from,y_from),(x_to,y_to))
+	
+	GUI
+		Funktionen:
+	
+			update( board ):
+				updatet die GUI mit dem aktuellen Stand	
+	
+			getMove( ):
+				Frage Spieler nach Zug
+				return: ((x_from,y_from),(x_to,y_to))
