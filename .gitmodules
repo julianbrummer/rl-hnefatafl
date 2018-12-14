@@ -1,6 +1,3 @@
 [submodule "gym-hnefatafl"]
 	path = gym-hnefatafl
 	url = https://github.com/julianbrummer/gym-hnefatafl
-[submodule "alpha-zero-general"]
-	path = alpha-zero-general
-	url = git@github.com:suragnair/alpha-zero-general.git
